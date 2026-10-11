@@ -103,6 +103,19 @@ function aplicarDesconto(lista, categoria, percentual) {
     return alterados;
 }
 
-const alterados = aplicarDesconto(produtos, "Roupas", 10);
-console.log(`${alterados} produtos receberam desconto.`);
-console.log(`Novo preço da camiseta: R$ ${buscarProduto(produtos, "Camiseta").preco}`);
+function registrarVenda(lista, nome, quantidade) {
+    const produto = buscarProduto(lista, nome);
+    if (!produto || produto.quantidade < quantidade) {
+        console.log("Venda não realizada! Produto inexistente ou estoque insuficiente.");
+        return false;
+    } else {
+        produto.quantidade -= quantidade;
+        produto.vendidos += quantidade;
+        console.log(`Venda realizada! ${produto.nome}: ${produto.quantidade} un. em estoque, ${produto.vendidos} vendidos.`);
+        return true;
+    }
+}
+
+registrarVenda(produtos, "Caneca", 3);
+registrarVenda(produtos, "Caneca", 1000);
+registrarVenda(produtos, "Copo", 1);

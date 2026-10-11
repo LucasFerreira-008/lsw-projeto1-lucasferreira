@@ -1,8 +1,8 @@
-Minha Loja - Universo Nerd
-Aluno: Lucas de Lima Ferreira - 202612010021
-Como executar: `node loja.js`
+Minha Loja - Universo Nerd;
+Aluno: Lucas de Lima Ferreira - 202612010021;
+Como executar: `node projeto1.js`;
 
-Funcionalidades
+FUNCIONALIDADES
 - `listarProdutos(lista)`: exibe cada produto em uma linha numerada, com nome, categoria, preço, quantidade em estoque e vendidos.
 - `cadastrarProduto(lista, nome, categoria, preco, quantidade)`: cria um produto novo (com `vendidos` igual a 0), adiciona ao final da lista e retorna o novo total de produtos. O nome é salvo já formatado.
 - `calcularValorEstoque(lista)`: retorna a soma de preço * quantidade de todos os produtos.

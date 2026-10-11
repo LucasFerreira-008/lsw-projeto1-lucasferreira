@@ -92,5 +92,17 @@ function produtosEmFalta(lista, minimo) {
     return emFalta;
 }
 
-const faltando = produtosEmFalta(produtos, 35);
-console.log(`Produtos com menos de 35 unidades: ${faltando.length}`);
+function aplicarDesconto(lista, categoria, percentual) {
+    let alterados = 0;
+    for (let i = 0; i < lista.length; i++) {
+        if (lista[i].categoria === categoria) {
+            lista[i].preco = lista[i].preco - (lista[i].preco * percentual / 100);
+            alterados++;
+        }
+    }
+    return alterados;
+}
+
+const alterados = aplicarDesconto(produtos, "Roupas", 10);
+console.log(`${alterados} produtos receberam desconto.`);
+console.log(`Novo preço da camiseta: R$ ${buscarProduto(produtos, "Camiseta").preco}`);

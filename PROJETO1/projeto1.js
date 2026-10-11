@@ -63,5 +63,12 @@ function cadastrarProduto(lista, nome, categoria, preco, quantidade) {
     return lista.length;
 }
 
-const total = cadastrarProduto(produtos, "Colar ET", "Acessórios", 25, 4);
-console.log(`Produto cadastrado! Agora a loja tem ${total} produtos.`);
+function calcularValorEstoque(lista) {
+    let total = 0;
+    for (let i = 0; i < lista.length; i++) {
+        total += lista[i].preco * lista[i].quantidade;
+    }
+    return total;
+}
+
+console.log(`Valor do estoque: R$${calcularValorEstoque(produtos)}`);

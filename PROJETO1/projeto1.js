@@ -1,3 +1,4 @@
+// ===== 1. DADOS =====
 const nomeLoja = "Universo Nerd";
 
 const produtos = [
@@ -45,12 +46,16 @@ const produtos = [
     }
 ];
 
+// ===== 2. FUNÇÕES =====
+
+// Tarefa 2
 function listarProdutos(lista) {
     for (let i = 0; i < lista.length; i++) {
         console.log(`${i + 1}. ${lista[i].nome} | ${lista[i].categoria} | R$ ${lista[i].preco} | ${lista[i].quantidade} un. | ${lista[i].vendidos} vendidos`);
     }
 }
 
+// Tarefa 3
 function cadastrarProduto(lista, nome, categoria, preco, quantidade) {
     const novoProduto = {
         nome: formatarNome(nome),
@@ -63,6 +68,7 @@ function cadastrarProduto(lista, nome, categoria, preco, quantidade) {
     return lista.length;
 }
 
+// Tarefa 4
 function calcularValorEstoque(lista) {
     let total = 0;
     for (let i = 0; i < lista.length; i++) {
@@ -71,6 +77,7 @@ function calcularValorEstoque(lista) {
     return total;
 }
 
+// Tarefa 5
 function buscarProduto(lista, termo) {
     for (let i = 0; i < lista.length; i++) {
         if (lista[i].nome.toLowerCase().includes(termo.toLowerCase())) {
@@ -82,6 +89,7 @@ function buscarProduto(lista, termo) {
     return null;
 }
 
+// Tarefa 6
 function produtosEmFalta(lista, minimo) {
     const emFalta = [];
     for (let i = 0; i < lista.length; i++) {
@@ -92,6 +100,7 @@ function produtosEmFalta(lista, minimo) {
     return emFalta;
 }
 
+// Tarefa 7
 function aplicarDesconto(lista, categoria, percentual) {
     let alterados = 0;
     for (let i = 0; i < lista.length; i++) {
@@ -103,6 +112,7 @@ function aplicarDesconto(lista, categoria, percentual) {
     return alterados;
 }
 
+// Tarefa 8
 function registrarVenda(lista, nome, quantidade) {
     const produto = buscarProduto(lista, nome);
     if (!produto || produto.quantidade < quantidade) {
@@ -116,11 +126,13 @@ function registrarVenda(lista, nome, quantidade) {
     }
 }
 
+// Tarefa 9
 function formatarNome(texto) {
     const limpo = texto.trim();
     return limpo.charAt(0).toUpperCase() + limpo.slice(1).toLowerCase();
 }
 
+// Tarefa 10
 function converterParaJSON(lista) {
     return JSON.stringify(lista);
 }
@@ -129,6 +141,7 @@ function lerJSON(texto) {
     return JSON.parse(texto);
 }
 
+// Tarefa 11
 function gerarRelatorio(nome, lista) {
     const baixo = produtosEmFalta(lista, 5);
     console.log(`===== RELATÓRIO: ${nome.toUpperCase()} =====`);
@@ -140,4 +153,42 @@ function gerarRelatorio(nome, lista) {
     }
 }
 
+// ===== 3. PROGRAMA PRINCIPAL =====
+console.log("--- Tarefa 2: listar ---");
+listarProdutos(produtos);
+
+console.log("--- Tarefa 3: cadastrar ---");
+const total = cadastrarProduto(produtos, "Colar ET", "Acessórios", 25, 4);
+
+console.log("--- Tarefa 4: valor do estoque ---");
+console.log(`Valor do estoque: R$${calcularValorEstoque(produtos)}`);
+
+console.log("--- Tarefa 5: buscar ---");
+console.log(buscarProduto(produtos, "PIKACHU"));
+console.log(buscarProduto(produtos, "Playstation"));
+
+console.log("--- Tarefa 6: em falta ---");
+const faltando = produtosEmFalta(produtos, 35);
+console.log(`Produtos com menos de 35 unidades: ${faltando.length}`);
+
+console.log("--- Tarefa 7: desconto ---");
+const alterados = aplicarDesconto(produtos, "Roupas", 10);
+console.log(`${alterados} produtos receberam desconto.`);
+console.log(`Novo preço da camiseta: R$ ${buscarProduto(produtos, "Camiseta").preco}`);
+
+console.log("--- Tarefa 8: registrar venda ---");
+registrarVenda(produtos, "Caneca", 3);
+registrarVenda(produtos, "Caneca", 1000);
+registrarVenda(produtos, "Copo", 1);
+
+console.log("--- Tarefa 9: formatar nome ---");
+console.log(formatarNome("    cAmisETA VinGAdoreS  "));
+
+console.log("--- Tarefa 10: JSON ---");
+const texto = converterParaJSON(produtos);
+console.log(typeof texto);
+const recuperados = lerJSON(texto);
+console.log(`Itens recuperados: ${recuperados.length} | Primeiro: ${recuperados[0].nome}`);
+
+console.log("--- Tarefa 11: relatório ---");
 gerarRelatorio(nomeLoja, produtos);

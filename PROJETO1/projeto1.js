@@ -51,4 +51,17 @@ function listarProdutos(lista) {
     }
 }
 
-listarProdutos(produtos);
+function cadastrarProduto(lista, nome, categoria, preco, quantidade) {
+    const novoProduto = {
+        nome: nome,
+        categoria: categoria,
+        preco: preco,
+        quantidade: quantidade,
+        vendidos: 0,
+    };
+    lista.push(novoProduto);
+    return lista.length;
+}
+
+const total = cadastrarProduto(produtos, "Colar ET", "Acessórios", 25, 4);
+console.log(`Produto cadastrado! Agora a loja tem ${total} produtos.`);

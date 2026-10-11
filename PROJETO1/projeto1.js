@@ -121,4 +121,15 @@ function formatarNome(texto) {
     return limpo.charAt(0).toUpperCase() + limpo.slice(1).toLowerCase();
 }
 
-console.log(formatarNome("    cAmisETA VinGAdoreS  "));
+function converterParaJSON(lista) {
+    return JSON.stringify(lista);
+}
+
+function lerJSON(texto) {
+    return JSON.parse(texto);
+}
+
+const texto = converterParaJSON(produtos);
+console.log(typeof texto);
+const recuperados = lerJSON(texto);
+console.log(`Itens recuperados: ${recuperados.length} | Primeiro: ${recuperados[0].nome}`);

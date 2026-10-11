@@ -82,5 +82,15 @@ function buscarProduto(lista, termo) {
     return null;
 }
 
-console.log(buscarProduto(produtos, "PIKACHU"));
-console.log(buscarProduto(produtos, "Playstation"));
+function produtosEmFalta(lista, minimo) {
+    const emFalta = [];
+    for (let i = 0; i < lista.length; i++) {
+        if (lista[i].quantidade < minimo) {
+            emFalta.push(lista[i]);
+        }
+    }
+    return emFalta;
+}
+
+const faltando = produtosEmFalta(produtos, 35);
+console.log(`Produtos com menos de 35 unidades: ${faltando.length}`);

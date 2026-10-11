@@ -71,4 +71,16 @@ function calcularValorEstoque(lista) {
     return total;
 }
 
-console.log(`Valor do estoque: R$${calcularValorEstoque(produtos)}`);
+function buscarProduto(lista, termo) {
+    for (let i = 0; i < lista.length; i++) {
+        if (lista[i].nome.toLowerCase().includes(termo.toLowerCase())) {
+            console.log(`Encontrado: ${lista[i].nome} - R$ ${lista[i].preco}`);
+            return lista[i];
+        }
+    }
+    console.log(`Nenhum produto encontrado.`);
+    return null;
+}
+
+console.log(buscarProduto(produtos, "PIKACHU"));
+console.log(buscarProduto(produtos, "Playstation"));

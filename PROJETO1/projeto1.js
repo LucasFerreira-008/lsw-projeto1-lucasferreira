@@ -53,7 +53,7 @@ function listarProdutos(lista) {
 
 function cadastrarProduto(lista, nome, categoria, preco, quantidade) {
     const novoProduto = {
-        nome: nome,
+        nome: formatarNome(nome),
         categoria: categoria,
         preco: preco,
         quantidade: quantidade,
@@ -116,6 +116,9 @@ function registrarVenda(lista, nome, quantidade) {
     }
 }
 
-registrarVenda(produtos, "Caneca", 3);
-registrarVenda(produtos, "Caneca", 1000);
-registrarVenda(produtos, "Copo", 1);
+function formatarNome(texto) {
+    const limpo = texto.trim();
+    return limpo.charAt(0).toUpperCase() + limpo.slice(1).toLowerCase();
+}
+
+console.log(formatarNome("    cAmisETA VinGAdoreS  "));

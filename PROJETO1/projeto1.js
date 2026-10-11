@@ -44,3 +44,11 @@ const produtos = [
         vendidos: 10
     }
 ];
+
+function listarProdutos(lista) {
+    for (let i = 0; i < lista.length; i++) {
+        console.log(`${i + 1}. ${lista[i].nome} | ${lista[i].categoria} | R$ ${lista[i].preco} | ${lista[i].quantidade} un. | ${lista[i].vendidos} vendidos`);
+    }
+}
+
+listarProdutos(produtos);

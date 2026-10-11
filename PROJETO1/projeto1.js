@@ -129,7 +129,15 @@ function lerJSON(texto) {
     return JSON.parse(texto);
 }
 
-const texto = converterParaJSON(produtos);
-console.log(typeof texto);
-const recuperados = lerJSON(texto);
-console.log(`Itens recuperados: ${recuperados.length} | Primeiro: ${recuperados[0].nome}`);
+function gerarRelatorio(nome, lista) {
+    const baixo = produtosEmFalta(lista, 5);
+    console.log(`===== RELATÓRIO: ${nome.toUpperCase()} =====`);
+    console.log(`Produtos cadastrados: ${lista.length}`);
+    console.log(`Valor total em estoque: R$ ${calcularValorEstoque(lista)}`);
+    console.log(`Produtos com estoque baixo: ${baixo.length}`);
+    for (let i = 0; i < baixo.length; i++) {
+        console.log(`- ${baixo[i].nome} (${baixo[i].quantidade} un.)`);
+    }
+}
+
+gerarRelatorio(nomeLoja, produtos);
